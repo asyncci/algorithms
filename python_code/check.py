@@ -30,7 +30,6 @@ def bisection(a,b,point) -> float:
 
         if L < point:
             return xm
-            break
 
 def gold_ratio(a,b,e) -> float:
     ratio = (-1 + math.sqrt(5))/2
@@ -70,5 +69,4 @@ def gold_ratio(a,b,e) -> float:
 a = float(input())
 b = float(input())
 
-print("Bisection: " , bisection(a,b,0.01))
-gold_ratio(a,b,0.01)
+gold_ratio(a,b,0.5)
