@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class Bisection extends MathFunction{
 
     public Bisection(float a, float b, float step, Function function) {
@@ -5,7 +7,10 @@ public class Bisection extends MathFunction{
     }
 
     @Override
-    public float method() {
+    public float method() throws IOException {
+
+        StringBuilder total = new StringBuilder();
+        float last_a = b, last_b = b;
 
         while (true) {
             float L = b - a;
@@ -32,13 +37,18 @@ public class Bisection extends MathFunction{
                     b = x2;
                 }
             }
+            System.out.println("writing");
+            String line = String.format("%f %f %f %f %f %f %f %f\n",x1,x2,fx1,fx2,a,b,b-a,(last_b - last_a)/ (b - a));
+            total.append(line);
+            last_b = b;
+            last_a = a;
 
             L = b - a;
 
             if (L < step) {
+                writeToFile("Bisection.txt",total.toString());
                 return xm;
             }
         }
-
     }
 }
