@@ -5,37 +5,36 @@ public class Bisection extends MathFunction{
     }
 
     @Override
-    public float method() {
+    public double method() {
 
         while (true) {
-            float L = b - a;
-            float xm = (a + b)/2;
-            float x1 = a + L/4;
-            float x2 = b - L/4;
+            double L = b - a;
+            double xm = (a + b)/2;
+            double x1 = a + L/4;
+            double x2 = b - L/4;
 
-            float fxm = function.get(xm);
-            float fx1 = function.get(x1);
-            float fx2 = function.get(x2);
+            double fxm = function.get(xm);
+            double fx1 = function.get(x1);
+            double fx2 = function.get(x2);
 
             if (fx1 < fxm) {
                 b = xm;
                 xm = x1;
             }
-
-            if (fx1 > fxm) {
+            else {
                 if (fx2 < fxm) {
                     a = xm;
                     xm = x2;
                 }
-                else if (fx2 > fxm){
-                    a = xm;
+                else {
+                    a = x1;
                     b = x2;
                 }
             }
 
-            L = b - a;
+            L = Math.abs(x2 - x1);
 
-            if (L < step) {
+            if (L <= eps) {
                 return xm;
             }
         }

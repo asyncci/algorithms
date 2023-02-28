@@ -1,13 +1,13 @@
 public abstract class MinimumFunction extends MathFunction {
-    protected float R;
-    public MinimumFunction(float a, float b, float step, Function function) {
-        super(a, b, step, function);
+    protected double R;
+    public MinimumFunction(double a, double b, double eps, Function function) {
+        super(a, b, eps, function);
     }
-    protected void setR(float r) {
+    protected void setR(double r) {
         R = r;
     }
 
-    public float getR() {
+    public double getR() {
         return R;
     }
 }

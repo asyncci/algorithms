@@ -1,3 +1,3 @@
 public interface Function {
-    float get(float x);
+    double get(double x);
 }

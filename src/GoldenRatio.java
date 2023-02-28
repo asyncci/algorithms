@@ -1,20 +1,20 @@
 public class GoldenRatio extends MinimumFunction{
-    public GoldenRatio(float a, float b, float step, Function function) {
-        super(a, b, step, function);
+    public GoldenRatio(double a, double b, double eps, Function function) {
+        super(a, b, eps, function);
     }
 
     @Override
-    public float method() {
-        float ratio = (float) ((-1f + Math.sqrt(5))/2f);
-        float t1 = 1 - ratio;
-        float x0 = a;
-        float x3 = b;
-        float x1 = a + t1*(b-a);
-        float x2 = x1;
-        float fx1 = function.get(x1);
-        float fx2 = function.get(x2);
-
-        float L = x3 - x0;
+    public double method() {
+        double ratio = ((-1f + Math.sqrt(5))/2);
+        double t1 = ((-1 + Math.sqrt(5))/2);
+        double t2 = ((3 - Math.sqrt(5))/2);
+        double x0 = a;
+        double x3 = b;
+        double x1 = a + t1*(b-a);
+        double x2 = a + t2*(b-a);
+        double fx1 = function.get(x1);
+        double fx2 = function.get(x2);
+        double L = x3 - x0;
 
         while (true) {
             if (fx1 > fx2){
@@ -34,11 +34,11 @@ public class GoldenRatio extends MinimumFunction{
                 fx1 = function.get(x1);
             }
 
-            if (Math.abs(L) < step) {
+            if (Math.abs(L) < eps) {
                 break;
             }
         }
-        float x = (x0 + x3)/2;
+        double x = (x0 + x3)/2;
         setR(function.get(x));
         return x;
     }

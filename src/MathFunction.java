@@ -1,11 +1,13 @@
 public abstract class MathFunction implements Method{
-    protected float a , b, step;
+    protected double a;
+    protected double b;
+    protected double eps;
     protected Function function;
 
-    public MathFunction(float a, float b, float step, Function function) {
+    public MathFunction(double a, double b, double eps, Function function) {
         this.a = a;
         this.b = b;
-        this.step = step;
+        this.eps = eps;
         this.function = function;
     }
 }

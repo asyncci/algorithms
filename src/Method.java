@@ -1,3 +1,3 @@
 public interface Method {
-    float method();
+    double method();
 }
